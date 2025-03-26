@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [Image, setImage] = useState("");
+const name = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ title, author, description, Image});
+    name('/')
   };
 
   return (
@@ -46,13 +49,13 @@ function AddBook() {
           <label>Image:</label>
           <input
             type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            value={Image}
+            onChange={(e) => setImage(e.target.value)}
             required
           />
         </div>
         <div>
-          <button type="submit">Submitted</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
